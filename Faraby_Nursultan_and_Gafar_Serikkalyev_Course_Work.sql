@@ -130,6 +130,26 @@ INSERT INTO GamePlatform VALUES (3, 'Play Station 4', 'Sony Entertainment');
 SELECT * from GamePlatform;
 
 
+INSERT INTO Games VALUES (1, 'The Witcher 3', 'lorem ipsum', '2015-05-19', 1, 1, 1);
+INSERT INTO Games VALUES (2, 'DOOM Eternal', 'lorem ipsum', '2020-03-27', 2, 2, 2);
+INSERT INTO Games VALUES (3, 'Devil May Cry 5', 'lorem ipsum', '2019-03-08', 3, 3, 3);
+
+SELECT * from Games; 
+
+
+INSERT INTO UsersOfSite VALUES (1, 'Farad2020', 'f.@mail.ru', 'faradj', 'Test1234', '2020-02-27', 0.0, True);
+INSERT INTO UsersOfSite VALUES (2, 'Kaizy', 'g.@mail.ru', 'kaizyG', 'Test1234', '2020-02-25', 0.0,  True);
+INSERT INTO UsersOfSite VALUES (3, 'Tur4r', 't.@mail.ru', 'turarara', 'Test1234', '2020-03-01',  0.0, True);
+
+SELECT * from UsersOfSite;
+
+INSERT INTO TransactionHistory VALUES (1,'2020-03-27 12:37:55', 20000.0, 1, 1);
+INSERT INTO TransactionHistory VALUES (2, '2020-02-27 15:38:05', 7000.0, 2, 2);
+INSERT INTO TransactionHistory VALUES (3, '2020-03-09 18:37:09', 20000.0, 3, 3);
+
+SELECT * from TransactionHistory;
+
+
 INSERT INTO CompanyDepartments VALUES (1, 'HR');
 INSERT INTO CompanyDepartments VALUES (2, 'Marketing');
 INSERT INTO CompanyDepartments VALUES (3, 'IT');
@@ -139,4 +159,5 @@ SELECT * from CompanyDepartments;
 INSERT INTO CompanySpecialties VALUES (1, 'HR');
 INSERT INTO CompanySpecialties VALUES (2, 'Marketing');
 INSERT INTO CompanySpecialties VALUES (3, 'IT');
-// The rest of the work will be done untill deadline. And ER diagram update also be ready at that time
+
+SELECT * from CompanySpecialties;
