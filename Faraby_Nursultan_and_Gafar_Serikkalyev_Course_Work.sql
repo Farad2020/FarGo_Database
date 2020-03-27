@@ -161,3 +161,24 @@ INSERT INTO CompanySpecialties VALUES (2, 'Marketing');
 INSERT INTO CompanySpecialties VALUES (3, 'IT');
 
 SELECT * from CompanySpecialties;
+
+INSERT INTO CompanyProjectTeams VALUES (1, 'AlphaT');
+INSERT INTO CompanyProjectTeams VALUES (2, 'BetaT');
+INSERT INTO CompanyProjectTeams VALUES (3, 'SigmaT');
+
+SELECT * from CompanyProjectTeams;
+
+INSERT INTO CompanyProjects VALUES (1, 'BloodRaven','Project includes lorem ipsum inhen grase etc.',true,'2020-08-12',1);
+INSERT INTO CompanyProjects VALUES (2, 'FunnyState','Project includes lorem ipsum inhen grase etc.',false,'2019-02-12',2);
+INSERT INTO CompanyProjects VALUES (3, 'SportVR','Project includes lorem ipsum inhen grase etc.',true,'2020-04-17',3);
+
+SELECT * from CompanyProjects;
+
+ALTER TABLE CompanyWorkers 
+ALTER COLUMN email TYPE varchar(40);
+
+INSERT INTO CompanyWorkers VALUES (1, 'Jackson','Michael','1969-01-01','7077410707','example@mail.com','2018-05-25',true,1,1);
+INSERT INTO CompanyWorkers VALUES (2, 'Sherzhinger','Ariana','1986-04-01','7077410707','example@mail.com','2018-06-15',true,2,2);
+INSERT INTO CompanyWorkers VALUES (3, 'Miller','George','1990-12-12','7077410707','example@mail.com','2018-03-18',true,3,3);
+
+SELECT * from CompanyWorkers;
