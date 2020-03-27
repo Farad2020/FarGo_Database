@@ -1,4 +1,4 @@
-﻿
+﻿//This message is for you
 CREATE TABLE Genres(
 	genre_id int PRIMARY KEY ,
 	genre_name varchar(40)
