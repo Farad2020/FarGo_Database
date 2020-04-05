@@ -182,3 +182,27 @@ INSERT INTO CompanyWorkers VALUES (2, 'Sherzhinger','Ariana','1986-04-01','70774
 INSERT INTO CompanyWorkers VALUES (3, 'Miller','George','1990-12-12','7077410707','example@mail.com','2018-03-18',true,3,3);
 
 SELECT * from CompanyWorkers;
+
+--CourseWork 6
+
+SELECT game_id
+FROM Games;
+
+SELECT game_name
+FROM Games WHERE game_id=1;
+
+SELECT
+   dev_comp_id ,
+   dev_comp_name
+FROM GameDeveloperCompanies
+UNION ALL
+SELECT
+  publisher_id,
+  publisher_name
+FROM GamePublishers;
+
+SELECT * FROM CompanyWorkers
+EXCEPT 
+SELECT * FROM CompanyWorkers
+WHERE worker_id=2;
+
