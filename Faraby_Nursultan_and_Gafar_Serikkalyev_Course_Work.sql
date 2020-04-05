@@ -1,4 +1,4 @@
-﻿//This message is for you
+﻿--This message is for you
 CREATE TABLE Genres(
 	genre_id int PRIMARY KEY ,
 	genre_name varchar(40)
@@ -90,7 +90,7 @@ CREATE TABLE UsersOfSite(
 	account_active boolean
 );
 
-//I wasnt able to change ER diagram, cause I didnt had access, but new change is Transaction history is combined with Shop Item
+--I wasnt able to change ER diagram, cause I didnt had access, but new change is Transaction history is combined with Shop Item
 
 CREATE TABLE TransactionHistory(
 	transaction_id int PRIMARY KEY ,
@@ -102,11 +102,12 @@ CREATE TABLE TransactionHistory(
 	FOREIGN KEY (user_id) REFERENCES UsersOfSite(user_id)
 );
 
-//Work with Genres
+--Work with Genres
 
 INSERT INTO Genres VALUES (1, 'RPG');
 INSERT INTO Genres VALUES (2, 'FPS');
 INSERT INTO Genres VALUES (3, 'Beat em up');
+INSERT INTO Genres VALUES (4, 'MOBA');
 
 SELECT * from Genres;
 
@@ -133,6 +134,7 @@ SELECT * from GamePlatform;
 INSERT INTO Games VALUES (1, 'The Witcher 3', 'lorem ipsum', '2015-05-19', 1, 1, 1);
 INSERT INTO Games VALUES (2, 'DOOM Eternal', 'lorem ipsum', '2020-03-27', 2, 2, 2);
 INSERT INTO Games VALUES (3, 'Devil May Cry 5', 'lorem ipsum', '2019-03-08', 3, 3, 3);
+INSERT INTO Games VALUES (4, 'Devil May Cry 4', 'lorem ipsum', '2019-02-08', 3, 3, 3);
 
 SELECT * from Games; 
 
@@ -182,3 +184,35 @@ INSERT INTO CompanyWorkers VALUES (2, 'Sherzhinger','Ariana','1986-04-01','70774
 INSERT INTO CompanyWorkers VALUES (3, 'Miller','George','1990-12-12','7077410707','example@mail.com','2018-03-18',true,3,3);
 
 SELECT * from CompanyWorkers;
+
+SELECT Games.genre_id FROM Games INTERSECT
+SELECT  Genres.genre_id FROM Genres;
+
+
+SELECT worker_name, worker_surname, CompanyProjectTeams.team_name
+FROM CompanyWorkers
+INNER JOIN CompanyProjectTeams
+ON CompanyWorkers.team_id = CompanyProjectTeams.team_id;
+
+
+SELECT game_name, genre_name
+FROM Games
+LEFT JOIN Genres
+ON Games.genre_id = Genres.genre_id;
+
+SELECT game_name, genre_name
+FROM Games
+RIGHT JOIN Genres
+ON Games.genre_id = Genres.genre_id;
+
+SELECT game_name, genre_name
+FROM Games
+FULL OUTER JOIN Genres
+ON Games.genre_id = Genres.genre_id;
+
+SELECT *
+FROM GamePlatform
+CROSS JOIN Games;
+
+SELECT *
+FROM GamePlatform, Games;
