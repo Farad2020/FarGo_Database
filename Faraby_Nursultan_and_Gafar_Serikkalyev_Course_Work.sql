@@ -185,6 +185,30 @@ INSERT INTO CompanyWorkers VALUES (3, 'Miller','George','1990-12-12','7077410707
 
 SELECT * from CompanyWorkers;
 
+
+--CourseWork 6
+
+SELECT game_id
+FROM Games;
+
+SELECT game_name
+FROM Games WHERE game_id=1;
+
+SELECT
+   dev_comp_id ,
+   dev_comp_name
+FROM GameDeveloperCompanies
+UNION ALL
+SELECT
+  publisher_id,
+  publisher_name
+FROM GamePublishers;
+
+SELECT * FROM CompanyWorkers
+EXCEPT 
+SELECT * FROM CompanyWorkers
+WHERE worker_id=2;
+
 SELECT Games.genre_id FROM Games INTERSECT
 SELECT  Genres.genre_id FROM Genres;
 
@@ -216,3 +240,6 @@ CROSS JOIN Games;
 
 SELECT *
 FROM GamePlatform, Games;
+
+
+
