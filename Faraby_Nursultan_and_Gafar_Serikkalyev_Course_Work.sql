@@ -242,4 +242,29 @@ SELECT *
 FROM GamePlatform, Games;
 
 
+--CourseWork 7-8
+
+INSERT INTO UsersOfSite VALUES (4, 'BOSS667', 'b.@mail.ru', 'boss', 'Test1234', '2020-02-27', 80000.0, True);
+INSERT INTO UsersOfSite VALUES (5, 'GUMANGASAAAAVR', 'g.@mail.ru', 'Gumanga', 'Test1234', '2020-02-25', 200.0,  True);
+INSERT INTO UsersOfSite VALUES (6, 'Yernar', 'y.@mail.ru', 'Yeranararara', 'Test1234', '2020-03-01',  100.0, True);
+
+
+SELECT avg(wallet), min(wallet), max(wallet) FROM UsersOfSite;
+
+SELECT username
+FROM UsersOfSite
+GROUP BY user_id
+HAVING wallet > 2000;
+
+
+SELECT username,registration_date
+FROM UsersOfSite
+ORDER BY username ASC, registration_date DESC;
+
+SELECT us.user_login||' '|| us.user_password  , us.user_email,us.registration_date
+FROM UsersOfSite us
+ORDER BY us.user_login ASC;
+
+SELECT sum(transaction_cost) FROM TransactionHistory
+WHERE transaction_cost  BETWEEN 10000 AND 30000;
 
