@@ -20,6 +20,8 @@ CREATE TABLE GamePlatform(
 	platform_holder varchar(40)
 );
 
+
+
 CREATE TABLE Games(
 	game_id int PRIMARY KEY ,
 	game_name varchar(40), 
@@ -33,7 +35,13 @@ CREATE TABLE Games(
 	FOREIGN KEY (publisher_id) REFERENCES GamePublishers(publisher_id)
 );
 
-
+CREATE TABLE PlatformRelation(
+	relation_id int PRIMARY KEY ,
+	game_id int,
+	platform_id int,
+	FOREIGN KEY (game_id) REFERENCES Games(game_id),
+	FOREIGN KEY (platform_id) REFERENCES GamePlatform(platform_id)
+);
 
 CREATE TABLE CompanyDepartments(
 	department_id int PRIMARY KEY ,
@@ -138,6 +146,18 @@ INSERT INTO Games VALUES (4, 'Devil May Cry 4', 'lorem ipsum', '2019-02-08', 3, 
 
 SELECT * from Games; 
 
+INSERT INTO PlatformRelation VALUES (1, 1, 1 );
+INSERT INTO PlatformRelation VALUES (2, 1, 2 );
+INSERT INTO PlatformRelation VALUES (3, 1, 3 );
+INSERT INTO PlatformRelation VALUES (4, 2, 1 );
+INSERT INTO PlatformRelation VALUES (5, 2, 2 );
+INSERT INTO PlatformRelation VALUES (6, 2, 3 );
+INSERT INTO PlatformRelation VALUES (7, 3, 1 );
+INSERT INTO PlatformRelation VALUES (8, 3, 3 );
+INSERT INTO PlatformRelation VALUES (9, 4, 1 );
+INSERT INTO PlatformRelation VALUES (10, 4, 3 );
+
+SELECT * from PlatformRelation;
 
 INSERT INTO UsersOfSite VALUES (1, 'Farad2020', 'f.@mail.ru', 'faradj', 'Test1234', '2020-02-27', 0.0, True);
 INSERT INTO UsersOfSite VALUES (2, 'Kaizy', 'g.@mail.ru', 'kaizyG', 'Test1234', '2020-02-25', 0.0,  True);
@@ -240,6 +260,24 @@ CROSS JOIN Games;
 
 SELECT *
 FROM GamePlatform, Games;
+
+SELECT count(*) 
+FROM Games;
+
+SELECT genre_id, count(*)
+FROM Games gm, Genre gr
+GROUP BY genre_id;
+
+
+SELECT game.game_id, game.game_name, genre.genre_name, pub.publisher_name, devs.dev_comp_name
+FROM Games game, Genres genre, GamePublishers pub, GameDeveloperCompanies devs 
+Where genre.genre_id = game.genre_id and game.publisher_id = pub.publisher_id and game.dev_comp_id = devs.dev_comp_id;
+
+
+
+SELECT game.game_id, game.game_name, genre.genre_name, platform.platform_name
+FROM Games game, GamePlatform platform, Genres genre, PlatformRelation rel
+Where rel.game_id = game.game_id and rel.platform_id = platform.platform_id and genre.genre_id = game.genre_id;
 
 
 
