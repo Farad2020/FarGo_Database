@@ -306,3 +306,63 @@ ORDER BY us.user_login ASC;
 SELECT sum(transaction_cost) FROM TransactionHistory
 WHERE transaction_cost  BETWEEN 10000 AND 30000;
 
+
+
+
+
+--Course work 9
+
+
+--Task 5
+SELECT *
+FROM Teachers
+WHERE teach_id < ALL (
+SELECT group_id
+FROM Students
+Where group_id=3
+);
+ 
+--Task 6
+SELECT fname, lname
+FROM (
+SELECT *
+FROM Teachers
+Where fname='Nazgul' or fname = 'Olga') AS foo;
+
+--Task 7
+INSERT INTO GamePlatform VALUES (1, 'Steam', 'Valve');
+Select * from GamePublishers;
+ 
+INSERT INTO GamePublishers (publisher_id, publisher_name)
+Values(4, (SELECT platform_holder
+FROM GamePlatform
+WHERE platform_id = 1));
+
+Select * from GamePublishers;
+ 
+SELECT fname, lname from Teachers where teach_id = 9;
+ 
+ 
+--Task 8
+ 
+DELETE FROM GamePublishers Where publisher_name =
+(SELECT platform_holder
+FROM GamePlatform
+WHERE platform_id = 1);
+ 
+SELECT * from GamePublishers;
+ 
+ 
+--Task 9
+Select * from UsersOfSite;
+
+UPDATE UsersOfSite
+SET wallet=wallet+500
+WHERE user_id =
+(SELECT user_id
+FROM UsersOfSite
+WHERE user_id = 1);
+
+
+Select * from UsersOfSite;
+
