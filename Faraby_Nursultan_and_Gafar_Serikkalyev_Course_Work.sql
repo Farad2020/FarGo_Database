@@ -306,11 +306,47 @@ ORDER BY us.user_login ASC;
 SELECT sum(transaction_cost) FROM TransactionHistory
 WHERE transaction_cost  BETWEEN 10000 AND 30000;
 
+--COurseWork 9
 
+SELECT worker_surname,team_id  FROM CompanyWorkers
+WHERE team_id NOT IN  (SELECT team_id
+FROM CompanyProjectTeams
+WHERE team_id=1 or team_id=5);
 
+SELECT worker_surname,team_id
+FROM   CompanyWorkers
+WHERE   team_id IN (SELECT team_id
+FROM CompanyProjectTeams
+WHERE team_id=5 or team_id=2 or team_id=1 or team_id=7);
 
+SELECT worker_name, team_name
+FROM CompanyWorkers, CompanyProjectTeams
+WHERE NOT EXISTS (
+  SELECT team_id
+  FROM CompanyProjectTeams
+  WHERE team_name = 'SigmaT');
 
---Course work 9
+SELECT *
+FROM CompanyWorkers
+WHERE team_id < ANY (
+SELECT team_id
+FROM CompanyWorkers
+Where team_id=3
+);
+
+SELECT *
+FROM  CompanyWorkers
+WHERE worker_id < ALL (
+SELECT team_id
+FROM CompanyProjectTeams
+Where team_id=4
+);
+
+SELECT worker_name, worker_surname
+FROM (
+SELECT *
+FROM CompanyWorkers
+Where worker_name='Michael' or worker_surname = 'Miller') AS foo;
 
 
 --Task 5
